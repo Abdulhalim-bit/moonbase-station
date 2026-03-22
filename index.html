@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONBASE — Humanity's Lunar Frontier</title>
+    <meta name="description" content="Moonbase is humanity's first permanent lunar settlement, pioneering sustainable life beyond Earth from Shackleton Crater.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="canvas-container" aria-hidden="true"></div>
+    <div class="ambient-particles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <nav id="main-nav">
+        <a href="#hero" class="nav-logo"><span class="logo-icon">◈</span><span class="logo-text">MOONBASE</span></a>
+        <div class="nav-links" id="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#missions" class="nav-link">Missions</a>
+            <a href="#programs" class="nav-link">Programs</a>
+            <a href="#team" class="nav-link">Crew</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="#contact" class="nav-link nav-link-cta">Join Mission</a>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hud-overlay" aria-hidden="true">
+            <div class="hud-corner hud-tl"></div>
+            <div class="hud-corner hud-tr"></div>
+            <div class="hud-corner hud-bl"></div>
+            <div class="hud-corner hud-br"></div>
+            <div class="hud-scanline"></div>
+            <div class="hud-telemetry hud-left">
+                <span>SYS.LINK: <em>ACTIVE</em></span>
+                <span>FREQ: 2.4 GHz</span>
+                <span>SIGNAL: ████████░░</span>
+                <span>LAT: 89.9°S</span>
+            </div>
+            <div class="hud-telemetry hud-right">
+                <span>O₂: 98.2%</span>
+                <span>HULL: <em>NOMINAL</em></span>
+                <span>PRES: 101.3 kPa</span>
+                <span>RAD: 0.12 mSv</span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="badge-dot"></span><span class="badge-text">LUNAR SOUTH POLE · SHACKLETON CRATER</span></div>
+            <h1 class="hero-title"><span class="title-line">MOON</span><span class="title-line">BASE</span></h1>
+            <p class="hero-tagline">Pioneering humanity's first permanent settlement beyond Earth</p>
+            <div class="hero-stats-strip">
+                <div class="hero-stat"><span class="hero-stat-value">2028</span><span class="hero-stat-label">EST.</span></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><span class="hero-stat-value">384,400</span><span class="hero-stat-label">KM FROM EARTH</span></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><span class="hero-stat-value">−173°C</span><span class="hero-stat-label">SURFACE TEMP</span></div>
+            </div>
+        </div>
+        <div class="scroll-indicator"><div class="scroll-line"></div><span class="scroll-text">SCROLL TO EXPLORE</span></div>
+        <div class="hero-coordinates"><span>89.9°S 0.0°E</span><span>ALT: 4.2 KM</span></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-content">
+            <div class="section-label"><span class="label-index">01</span><span class="label-line"></span><span class="label-text">OVERVIEW</span></div>
+            <h2 class="section-title">The Gateway<br>to the <span class="gradient-text">Cosmos</span></h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Founded in 2028 by a coalition of the world's leading aerospace organizations, Moonbase represents humanity's boldest leap into the cosmos. Our mission: establish a self-sustaining lunar colony that serves as the gateway to deep space exploration.</p>
+                    <p>Located in the Shackleton Crater near the Moon's south pole, Moonbase Alpha leverages permanent sunlight on the crater rim for solar energy and access to water ice deposits in the permanently shadowed crater floor — making sustainable habitation possible for the first time.</p>
+                </div>
+                <div class="about-card glass-card">
+                    <div class="card-glow"></div>
+                    <div class="about-card-header"><span class="mono-label">SYS.STATUS</span><span class="status-dot active"></span></div>
+                    <div class="about-card-stats">
+                        <div class="mini-stat"><span class="mini-stat-value">12</span><span class="mini-stat-label">Active Modules</span></div>
+                        <div class="mini-stat"><span class="mini-stat-value">98.7%</span><span class="mini-stat-label">System Uptime</span></div>
+                        <div class="mini-stat"><span class="mini-stat-value">24</span><span class="mini-stat-label">Crew on Station</span></div>
+                        <div class="mini-stat"><span class="mini-stat-value">3.2 GW</span><span class="mini-stat-label">Power Output</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-banner">
+        <div class="stats-grid">
+            <div class="stat-item"><span class="stat-number" data-count="238">0</span><span class="stat-label">Personnel Deployed</span></div>
+            <div class="stat-item"><span class="stat-number" data-count="16">0</span><span class="stat-label">Active Missions</span></div>
+            <div class="stat-item"><span class="stat-number" data-count="42">0</span><span class="stat-label">Lunar Expeditions</span></div>
+            <div class="stat-item"><span class="stat-number" data-count="7">0</span><span class="stat-label">Partner Nations</span></div>
+        </div>
+    </section>
+
+    <!-- MISSIONS -->
+    <section id="missions">
+        <div class="section-content">
+            <div class="section-label"><span class="label-index">02</span><span class="label-line"></span><span class="label-text">MISSIONS</span></div>
+            <h2 class="section-title">Mission <span class="gradient-text">Timeline</span></h2>
+            <p class="section-subtitle">From first relay deployment to permanent civilian habitation.</p>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="mission-item" data-year="2027"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2027</span><h3 class="mission-name">ARTEMIS RELAY</h3><p class="mission-desc">Deploy a constellation of 6 orbital communications relay satellites establishing permanent high-bandwidth Earth-Moon data links.</p><span class="mission-status completed">COMPLETED</span></div></div>
+                <div class="mission-item" data-year="2028"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2028</span><h3 class="mission-name">PATHFINDER</h3><p class="mission-desc">Autonomous rover survey of Shackleton Crater mapping optimal landing zones, water ice concentrations, and structural geology.</p><span class="mission-status completed">COMPLETED</span></div></div>
+                <div class="mission-item" data-year="2029"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2029</span><h3 class="mission-name">FOUNDATION</h3><p class="mission-desc">First pressurized habitat module delivery. Autonomous construction drones assemble the radiation-shielded primary structure.</p><span class="mission-status active">IN PROGRESS</span></div></div>
+                <div class="mission-item" data-year="2030"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2030</span><h3 class="mission-name">HELIOS</h3><p class="mission-desc">Solar array deployment along the crater rim — 200+ panels providing continuous 3.2 GW power leveraging near-permanent sunlight.</p><span class="mission-status upcoming">UPCOMING</span></div></div>
+                <div class="mission-item" data-year="2031"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2031</span><h3 class="mission-name">GENESIS</h3><p class="mission-desc">First permanent human crew of 12 arrives for a 6-month rotation including biologists, geologists, and engineers.</p><span class="mission-status upcoming">UPCOMING</span></div></div>
+                <div class="mission-item" data-year="2032"><div class="mission-dot"><span></span></div><div class="mission-card glass-card"><div class="card-glow"></div><span class="mission-year">2032</span><h3 class="mission-name">EXPANSION</h3><p class="mission-desc">Second habitat ring with research labs, hydroponic greenhouse, and the first lunar manufacturing facility.</p><span class="mission-status upcoming">UPCOMING</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs">
+        <div class="section-content">
+            <div class="section-label"><span class="label-index">03</span><span class="label-line"></span><span class="label-text">PROGRAMS</span></div>
+            <h2 class="section-title">Core <span class="gradient-text">Programs</span></h2>
+            <div class="programs-grid">
+                <div class="program-card glass-card"><div class="card-glow"></div><div class="program-icon">⬡</div><h3>Habitat Systems</h3><p>Modular pressurized quarters with radiation shielding, closed-loop life support, and artificial gravity centrifuge modules.</p><div class="program-tags"><span class="tag">Life Support</span><span class="tag">Radiation Shield</span><span class="tag">ISRU</span></div></div>
+                <div class="program-card glass-card"><div class="card-glow"></div><div class="program-icon">◇</div><h3>Lunar Mining</h3><p>Extraction of helium-3 fuel, rare earth elements, and water ice from regolith via autonomous drill platforms.</p><div class="program-tags"><span class="tag">Helium-3</span><span class="tag">Water Ice</span><span class="tag">Rare Earth</span></div></div>
+                <div class="program-card glass-card"><div class="card-glow"></div><div class="program-icon">△</div><h3>Space Tourism</h3><p>Civilian excursion packages: orbital viewing, guided surface walks, rover expeditions, and zero-gravity recreation.</p><div class="program-tags"><span class="tag">Excursions</span><span class="tag">Surface Walks</span><span class="tag">Zero-G</span></div></div>
+                <div class="program-card glass-card"><div class="card-glow"></div><div class="program-icon">○</div><h3>Deep Space Research</h3><p>Far-side observatory shielded from Earth radio interference, vacuum materials science, and biological research.</p><div class="program-tags"><span class="tag">Observatory</span><span class="tag">Bio Research</span><span class="tag">Materials</span></div></div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Team Section -->
+    <section class="section" id="team" style="padding-bottom: 20px;">
+        <div class="section-content">
+            <div class="section-label"><span class="label-index">04</span><span class="label-line"></span><span class="label-text">COMMAND STAFF</span></div>
+            <h2 class="section-title">The <span class="gradient-text">Pioneers</span></h2>
+            <div class="team-grid">
+                <div class="team-card glass-card">
+                    <div class="card-glow"></div>
+                    <div class="team-avatar"><div class="avatar-ring"></div><span class="avatar-initials">EV</span></div><h3>Dr. Elena Vasquez</h3><span class="team-role">Station Director</span><p>Former ESA Director. Led Mars Sample Return and designed the orbital rendezvous protocols now standard across cislunar operations.</p><div class="team-stats"><span class="mono-label">MISSIONS: 7</span><span class="mono-label">EVA HRS: 342</span></div></div>
+                <div class="team-card glass-card">
+                    <div class="card-glow"></div>
+                    <div class="team-avatar"><div class="avatar-ring"></div><span class="avatar-initials">JC</span></div><h3>Cmdr. James Chen</h3><span class="team-role">Flight Operations</span><p>15-year veteran with 4 ISS tours. Holds the record for most lunar descent-ascent cycles. Precision landing specialist.</p><div class="team-stats"><span class="mono-label">MISSIONS: 11</span><span class="mono-label">EVA HRS: 528</span></div></div>
+                <div class="team-card glass-card">
+                    <div class="card-glow"></div>
+                    <div class="team-avatar"><div class="avatar-ring"></div><span class="avatar-initials">AO</span></div><h3>Dr. Aria Okonkwo</h3><span class="team-role">Chief Science Officer</span><p>Planetary geologist who discovered subsurface water ice on Enceladus. Leads geological survey and ISRU extraction.</p><div class="team-stats"><span class="mono-label">MISSIONS: 5</span><span class="mono-label">EVA HRS: 276</span></div></div>
+                <div class="team-card glass-card">
+                    <div class="card-glow"></div>
+                    <div class="team-avatar"><div class="avatar-ring"></div><span class="avatar-initials">MP</span></div><h3>Dr. Mikhail Petrov</h3><span class="team-role">Engineering Lead</span><p>Architect of the pressurized habitat standard for ISS-2 and Gateway. Designed self-healing hull composites reducing breach risk by 94%.</p><div class="team-stats"><span class="mono-label">MISSIONS: 8</span><span class="mono-label">EVA HRS: 410</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Blog Section -->
+    <section class="section" id="home-blog">
+        <div class="section-content">
+            <div class="section-label"><span class="label-index">05</span><span class="label-line"></span><span class="label-text">TRANSMISSIONS</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px">
+                <h2 class="section-title" style="margin-bottom:0">Mission <span class="gradient-text">Log</span></h2>
+                <a href="blog.html" class="mono-label" style="text-decoration:none;color:var(--cyan);border:1px solid rgba(0,240,255,.3);padding:10px 20px;border-radius:20px;transition:all .3s">VIEW ALL POSTS ↗</a>
+            </div>
+            <div class="post-grid" id="home-posts-list" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:32px">
+                <div class="mono-label" style="color:var(--text-muted)">Loading transmissions...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact">
+        <div class="section-content cta-content">
+            <div class="hero-badge"><span class="badge-dot"></span><span>NOW ACCEPTING APPLICATIONS</span></div>
+            <h2 class="cta-title">Ready to Leave<br><span class="gradient-text">Earth Behind?</span></h2>
+            <p class="cta-subtitle">Join the next generation of lunar pioneers. Recruiting engineers, scientists, and civilian explorers for the 2032 expansion cohort.</p>
+            <div class="cta-actions">
+                <a href="#" class="btn btn-primary"><span>Apply for Crew</span><span class="btn-arrow">→</span></a>
+                <a href="#" class="btn btn-secondary"><span>Tourism Packages</span></a>
+            </div>
+            <div class="cta-coordinates mono-label">MOONBASE ALPHA · 89.9°S 0.0°E · SHACKLETON CRATER · LUNA</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand"><span class="logo-icon">◈</span><span class="logo-text">MOONBASE</span></div>
+                <div class="footer-links"><a href="#about">About</a><a href="#missions">Missions</a><a href="#programs">Programs</a><a href="#team">Crew</a></div>
+            </div>
+            <div class="footer-bottom">
+                <span class="mono-label">© 2028 MOONBASE AEROSPACE CORP.</span>
+                <span class="mono-label">SYS.TIME <span id="sys-time">00:00:00</span> UTC</span>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+    <!-- Home Page Blog Script -->
+    <script>
+    function formatDate(d) {
+        var dt = new Date(d);
+        return dt.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+    }
+    fetch('/api/posts').then(function(r){return r.json()}).then(function(posts) {
+        var container = document.getElementById('home-posts-list');
+        var topPosts = posts.slice(0, 3);
+        if(topPosts.length === 0) {
+            container.innerHTML = '<div class="mono-label" style="color:var(--text-muted)">No transmissions available.</div>';
+            return;
+        }
+        container.innerHTML = topPosts.map(function(p) {
+            var img = p.image || 'images/habitat.png';
+            var read = p.readTime || '5 min read';
+            var excerpt = p.excerpt.length > 100 ? p.excerpt.substring(0, 100) + '...' : p.excerpt;
+            return '<div class="post-preview glass-card" onclick="window.location.href=\'blog.html\'" style="padding:0;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;height:100%">' +
+                '<div class="card-glow"></div>' +
+                '<div style="width:100%;height:180px;overflow:hidden;position:relative"><img src="'+img+'" style="width:100%;height:100%;object-fit:cover;transition:transform .6s" alt="Cover" class="home-post-img"></div>' +
+                '<div style="padding:24px;display:flex;flex-direction:column;flex:1">' +
+                '<div style="display:flex;gap:12px;margin-bottom:12px;font-family:var(--font-mono);font-size:9px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase"><span>'+p.category+'</span><span style="color:var(--text-muted)">· '+formatDate(p.date)+'</span></div>' +
+                '<h3 style="font-size:1.2rem;font-weight:600;margin-bottom:10px;line-height:1.4">'+p.title+'</h3>' +
+                '<p style="color:var(--text-secondary);font-size:.9rem;line-height:1.6;margin-bottom:16px;flex:1">'+excerpt+'</p>' +
+                '<span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:1px;margin-top:auto">READ TRANSMISSION →</span>' +
+                '</div></div>';
+        }).join('');
+    }).catch(function(e){ console.error(e); });
+    </script>
+    <style>
+    .home-post-img:hover{transform:scale(1.05)}
+    </style>
+</body>
+</html>

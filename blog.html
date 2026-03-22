@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — MOONBASE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .blog-hero{min-height:40vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 40px 60px}
+    .blog-container{max-width:900px;margin:0 auto;padding:0 40px 80px;position:relative;z-index:2}
+    .post-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(350px, 1fr));gap:32px}
+    .post-preview{cursor:pointer;transition:transform .4s,border-color .4s;display:flex;flex-direction:column;height:100%;padding:0;overflow:hidden}
+    .post-preview:hover{transform:translateY(-8px);border-color:rgba(0,240,255,.3);box-shadow:0 10px 40px rgba(0,0,0,.5),0 0 20px rgba(0,240,255,.1)}
+    .post-image{width:100%;height:220px;object-fit:cover;border-bottom:1px solid rgba(255,255,255,.06);transition:transform .6s}
+    .post-preview:hover .post-image{transform:scale(1.05)}
+    .post-img-wrapper{width:100%;height:220px;overflow:hidden;position:relative}
+    .post-content-wrap{padding:28px;display:flex;flex-direction:column;flex:1}
+    .post-meta{display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+    .post-category{font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;padding:4px 10px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);border-radius:4px}
+    .post-date{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:1px}
+    .post-read-time{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:1px}
+    .post-preview h3{font-size:1.35rem;font-weight:600;margin-bottom:12px;line-height:1.4}
+    .post-excerpt{color:var(--text-secondary);font-size:.95rem;line-height:1.6;margin-bottom:20px;flex:1}
+    .post-author{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-top:auto}
+    .featured-badge{position:absolute;top:16px;right:16px;background:rgba(10,10,20,.8);backdrop-filter:blur(5px);font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:var(--gold);padding:4px 8px;border:1px solid rgba(255,215,0,.3);border-radius:3px;z-index:2}
+    
+    /* Category Filter */
+    .category-filter{display:flex;justify-content:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+    .filter-btn{background:transparent;border:1px solid var(--glass-border);color:var(--text-secondary);padding:8px 20px;border-radius:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+    .filter-btn:hover,.filter-btn.active{background:rgba(0,240,255,.1);border-color:var(--cyan);color:var(--cyan)}
+    
+    /* Single post view */
+    #single-view{display:none}
+    .back-link{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--cyan);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:32px}
+    .back-link:hover{text-decoration:underline}
+    .single-header{margin-bottom:40px;text-align:center}
+    .single-header h2{font-size:2.6rem;font-weight:700;line-height:1.2;margin:24px 0}
+    .single-hero-img{width:100%;height:60vh;max-height:500px;object-fit:cover;border-radius:12px;margin-bottom:48px;border:1px solid rgba(255,255,255,.06);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .single-meta-row{display:flex;justify-content:center;gap:24px;align-items:center;flex-wrap:wrap}
+    .single-content{color:var(--text-secondary);font-size:1.1rem;line-height:1.9;max-width:760px;margin:0 auto}
+    .single-content p{margin-bottom:20px}
+    .admin-link{position:fixed;bottom:20px;right:20px;z-index:100;font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text-muted);text-decoration:none;padding:8px 16px;border:1px solid var(--glass-border);border-radius:4px;background:var(--glass-bg);backdrop-filter:blur(10px);transition:all .3s}
+    .admin-link:hover{color:var(--cyan);border-color:rgba(0,240,255,.2)}
+    @media(max-width:768px){.blog-container{padding:0 20px 60px}.post-preview{padding:24px}.single-header h2{font-size:1.6rem}}
+    </style>
+</head>
+<body>
+    <nav id="main-nav" class="scrolled">
+        <a href="index.html" class="nav-logo"><span class="logo-icon">◈</span><span class="logo-text">MOONBASE</span></a>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html#about" class="nav-link">About</a>
+            <a href="index.html#missions" class="nav-link">Missions</a>
+            <a href="index.html#programs" class="nav-link">Programs</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="index.html#contact" class="nav-link nav-link-cta">Join Mission</a>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Blog listing -->
+    <div id="list-view">
+        <section class="blog-hero">
+            <div class="section-content" style="text-align:center">
+                <div class="section-label" style="justify-content:center"><span class="label-index">◈</span><span class="label-line"></span><span class="label-text">TRANSMISSIONS</span></div>
+                <h1 class="section-title">Mission <span class="gradient-text">Log</span></h1>
+                <p class="section-subtitle" style="margin:0 auto">Dispatches from the lunar frontier — news, discoveries, and announcements from Moonbase Alpha.</p>
+            </div>
+        </section>
+        <div class="blog-container" style="max-width:1200px">
+            <div class="category-filter" id="category-filter">
+                <button class="filter-btn active" data-cat="all">All Transmissions</button>
+            </div>
+            <div class="post-grid" id="posts-list"></div>
+        </div>
+    </div>
+
+    <!-- Single post view -->
+    <div id="single-view" class="blog-container" style="padding-top:120px;max-width:1000px">
+        <a href="#" class="back-link" id="back-btn">← BACK TO ALL POSTS</a>
+        <div class="single-header">
+            <span class="post-category" id="single-cat"></span>
+            <h2 id="single-title"></h2>
+            <div class="single-meta-row" id="single-meta"></div>
+        </div>
+        <img id="single-img" class="single-hero-img" src="" alt="Post cover">
+        <div class="single-content" id="single-content"></div>
+    </div>
+
+    <a href="admin.html" class="admin-link">⚙ ADMIN</a>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand"><span class="logo-icon">◈</span><span class="logo-text">MOONBASE</span></div>
+                <div class="footer-links"><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="admin.html">Admin</a></div>
+            </div>
+            <div class="footer-bottom">
+                <span class="mono-label">© 2028 MOONBASE AEROSPACE CORP.</span>
+                <span class="mono-label">SYS.TIME <span id="sys-time">00:00:00</span> UTC</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    var listView = document.getElementById('list-view');
+    var singleView = document.getElementById('single-view');
+    var postsList = document.getElementById('posts-list');
+
+    var allPosts = [];
+    
+    function formatDate(d) {
+        var dt = new Date(d);
+        return dt.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    }
+    function textToHtml(text) {
+        return text.split('\n\n').map(function(p) {
+            p = p.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            p = p.replace(/- (.+)/g, '<li>$1</li>');
+            if (p.indexOf('<li>') > -1) p = '<ul>' + p + '</ul>';
+            else p = '<p>' + p + '</p>';
+            return p;
+        }).join('');
+    }
+    function renderList(posts) {
+        postsList.innerHTML = posts.map(function(p) {
+            var img = p.image || 'images/habitat.png';
+            var read = p.readTime || '5 min read';
+            return '<div class="post-preview glass-card" data-id="'+p.id+'" onclick="showPost(\''+p.id+'\')">' +
+                '<div class="card-glow"></div>' +
+                '<div class="post-img-wrapper">' + (p.featured ? '<span class="featured-badge">★ FEATURED</span>' : '') + '<img src="'+img+'" class="post-image" alt="'+p.title+'" onerror="this.src=\'\'"></div>' +
+                '<div class="post-content-wrap">' +
+                '<div class="post-meta"><span class="post-category">'+p.category+'</span><span class="post-date">'+formatDate(p.date)+'</span><span class="post-read-time">· '+read+'</span></div>' +
+                '<h3>'+p.title+'</h3>' +
+                '<p class="post-excerpt">'+p.excerpt+'</p>' +
+                '<span class="post-author">By '+p.author+'</span></div></div>';
+        }).join('');
+    }
+    function initFilters(posts) {
+        var cats = new Set(posts.map(function(p){ return p.category; }));
+        var filterDiv = document.getElementById('category-filter');
+        cats.forEach(function(c) {
+            var btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.textContent = c;
+            btn.dataset.cat = c;
+            filterDiv.appendChild(btn);
+        });
+        filterDiv.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+                e.target.classList.add('active');
+                var cat = e.target.dataset.cat;
+                if (cat === 'all') renderList(allPosts);
+                else renderList(allPosts.filter(function(p){ return p.category === cat; }));
+            }
+        });
+    }
+    function showPost(id) {
+        var p = allPosts.find(function(post) { return post.id === id; });
+        if(!p) return;
+        
+        document.getElementById('single-title').textContent = p.title;
+        document.getElementById('single-cat').textContent = p.category;
+        document.getElementById('single-img').src = p.image || 'images/habitat.png';
+        document.getElementById('single-meta').innerHTML =
+            '<span class="post-date">'+formatDate(p.date)+'</span>' +
+            '<span class="post-author">By '+p.author+'</span>' +
+            '<span class="post-read-time">· '+(p.readTime || '5 min read')+'</span>';
+        document.getElementById('single-content').innerHTML = textToHtml(p.content);
+        listView.style.display = 'none';
+        singleView.style.display = 'block';
+        window.scrollTo(0,0);
+    }
+    document.getElementById('back-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        singleView.style.display = 'none';
+        listView.style.display = 'block';
+    });
+    // Load posts
+    fetch('/api/posts').then(function(r){return r.json()}).then(function(posts) {
+        allPosts = posts;
+        renderList(posts);
+        initFilters(posts);
+    });
+    // Clock
+    setInterval(function(){var d=new Date();document.getElementById('sys-time').textContent=String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0')+':'+String(d.getUTCSeconds()).padStart(2,'0')},1000);
+    // Mobile menu
+    var mb=document.getElementById('menu-toggle'),mn=document.getElementById('nav-links');
+    if(mb&&mn)mb.addEventListener('click',function(){mn.classList.toggle('active');mb.classList.toggle('active')});
+    </script>
+</body>
+</html>

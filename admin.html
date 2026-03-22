@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin CMS — MOONBASE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    body{background:#050510}
+    .admin-wrap{display:flex;min-height:100vh;padding-top:70px;position:relative;z-index:2}
+    .sidebar{width:240px;border-right:1px solid rgba(255,255,255,.06);padding:24px;flex-shrink:0;background:rgba(10,10,26,.5)}
+    .sidebar h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#555577;margin-bottom:20px;text-transform:uppercase}
+    .sidebar-btn{display:block;width:100%;text-align:left;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#8888aa;background:none;border:1px solid transparent;padding:10px 14px;border-radius:8px;cursor:pointer;margin-bottom:6px;transition:all .3s}
+    .sidebar-btn:hover,.sidebar-btn.active{color:#00f0ff;border-color:rgba(0,240,255,.15);background:rgba(0,240,255,.05)}
+    .main-panel{flex:1;padding:32px 40px;overflow-y:auto}
+    /* Login */
+    #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative;z-index:2}
+    .login-card{padding:48px;max-width:400px;width:100%;text-align:center}
+    .login-card h2{font-size:1.6rem;margin-bottom:8px}
+    .login-card p{color:#8888aa;font-size:.9rem;margin-bottom:32px}
+    .form-group{margin-bottom:20px;text-align:left}
+    .form-group label{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#555577;text-transform:uppercase;margin-bottom:8px}
+    .form-input{width:100%;padding:12px 16px;background:rgba(16,16,42,.6);border:1px solid rgba(255,255,255,.06);border-radius:8px;color:#e8e8f0;font-family:'Space Grotesk',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+    .form-input:focus{border-color:rgba(0,240,255,.3)}
+    textarea.form-input{min-height:200px;resize:vertical;line-height:1.7}
+    select.form-input{cursor:pointer}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-check{display:flex;align-items:center;gap:10px;cursor:pointer}
+    .form-check input{accent-color:#00f0ff;width:16px;height:16px}
+    .form-check span{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8888aa;letter-spacing:1px}
+    .submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,#00f0ff,#7b2ff7);color:#fff;border:none;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:2px;cursor:pointer;transition:all .3s;text-transform:uppercase}
+    .submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.3)}
+    .btn-danger{background:linear-gradient(135deg,#ff4466,#cc2244)}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,.06);color:#8888aa}
+    .btn-secondary:hover{border-color:rgba(0,240,255,.2);color:#00f0ff;box-shadow:none;transform:none}
+    .btn-small{display:inline-block;width:auto;padding:8px 16px;font-size:10px}
+    /* Posts table */
+    .posts-table{width:100%;border-collapse:collapse}
+    .posts-table th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#555577;text-transform:uppercase;text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .posts-table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.03);color:#e8e8f0;font-size:.9rem}
+    .posts-table tr:hover td{background:rgba(0,240,255,.02)}
+    .action-btns{display:flex;gap:8px}
+    .table-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    .table-header h2{font-size:1.5rem;font-weight:600}
+    .toast{position:fixed;top:80px;right:20px;z-index:200;padding:14px 24px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#fff;background:rgba(0,240,255,.15);border:1px solid rgba(0,240,255,.3);backdrop-filter:blur(10px);transform:translateX(120%);transition:transform .4s;pointer-events:none}
+    .toast.show{transform:translateX(0)}
+    .toast.error{background:rgba(255,68,102,.15);border-color:rgba(255,68,102,.3)}
+    @media(max-width:768px){.admin-wrap{flex-direction:column}.sidebar{width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:8px;padding:12px;overflow-x:auto}.main-panel{padding:20px}.form-row{grid-template-columns:1fr}.posts-table{font-size:.8rem}}
+    </style>
+</head>
+<body>
+    <nav id="main-nav" class="scrolled">
+        <a href="index.html" class="nav-logo"><span class="logo-icon">◈</span><span class="logo-text">MOONBASE</span></a>
+        <div class="nav-links" id="nav-links">
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="admin.html" class="nav-link active">Admin</a>
+            <a href="index.html" class="nav-link nav-link-cta">Back to Site</a>
+        </div>
+    </nav>
+    <div class="toast" id="toast"></div>
+
+    <!-- Login Screen -->
+    <div id="login-screen">
+        <div class="login-card glass-card">
+            <div class="card-glow"></div>
+            <h2>Mission Control</h2>
+            <p>Enter admin credentials to access the CMS</p>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-input" id="login-pass" placeholder="Enter admin password">
+            </div>
+            <button class="submit-btn" onclick="doLogin()">Authenticate</button>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#555577;margin-top:16px;letter-spacing:1px">DEFAULT: moonbase2028</p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" style="display:none">
+        <div class="admin-wrap">
+            <div class="sidebar">
+                <h3>CMS</h3>
+                <button class="sidebar-btn active" onclick="showPanel('list')">All Posts</button>
+                <button class="sidebar-btn" onclick="showPanel('new')">+ New Post</button>
+            </div>
+            <div class="main-panel">
+                <!-- Posts List -->
+                <div id="panel-list">
+                    <div class="table-header">
+                        <h2>All Posts</h2>
+                        <button class="submit-btn btn-small" onclick="showPanel('new')">+ NEW POST</button>
+                    </div>
+                    <table class="posts-table"><thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Featured</th><th>Actions</th></tr></thead><tbody id="table-body"></tbody></table>
+                </div>
+                <!-- New/Edit Post -->
+                <div id="panel-edit" style="display:none">
+                    <h2 id="form-title">New Post</h2>
+                    <input type="hidden" id="edit-id">
+                    <div class="form-group"><label>Title</label><input class="form-input" id="f-title" placeholder="Post title"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Category</label><select class="form-input" id="f-category"><option>Announcements</option><option>Engineering</option><option>Science</option><option>Crew</option><option>Tourism</option><option>General</option></select></div>
+                        <div class="form-group"><label>Author</label><input class="form-input" id="f-author" placeholder="Author name"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Cover Image URL</label><input class="form-input" id="f-image" placeholder="images/filename.png"></div>
+                        <div class="form-group"><label>Read Time</label><input class="form-input" id="f-readtime" placeholder="5 min"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Date</label><input type="date" class="form-input" id="f-date"></div>
+                        <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:4px"><label class="form-check"><input type="checkbox" id="f-featured"><span>Featured Post</span></label></div>
+                    </div>
+                    <div class="form-group"><label>Excerpt</label><input class="form-input" id="f-excerpt" placeholder="Short summary for post listing"></div>
+                    <div class="form-group"><label>Content</label><textarea class="form-input" id="f-content" placeholder="Full post content. Use **bold** for emphasis and - for bullet points."></textarea></div>
+                    <div style="display:flex;gap:12px;margin-top:8px">
+                        <button class="submit-btn" onclick="savePost()">Save Post</button>
+                        <button class="submit-btn btn-secondary" onclick="showPanel('list')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    var adminPass = '';
+    function toast(msg, err) {
+        var t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = 'toast show' + (err ? ' error' : '');
+        setTimeout(function(){ t.className = 'toast'; }, 3000);
+    }
+    function doLogin() {
+        adminPass = document.getElementById('login-pass').value;
+        fetch('/api/posts', { headers: { 'X-Admin-Password': adminPass } })
+            .then(function() {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('admin-dashboard').style.display = 'block';
+                loadPosts();
+            });
+    }
+    document.getElementById('login-pass').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doLogin();
+    });
+    function api(method, url, body) {
+        var opts = { method: method, headers: { 'Content-Type': 'application/json', 'X-Admin-Password': adminPass } };
+        if (body) opts.body = JSON.stringify(body);
+        return fetch(url, opts).then(function(r) {
+            if (!r.ok) throw new Error('Request failed');
+            return r.json();
+        });
+    }
+    function loadPosts() {
+        api('GET', '/api/posts').then(function(posts) {
+            var tb = document.getElementById('table-body');
+            tb.innerHTML = posts.map(function(p) {
+                return '<tr>' +
+                    '<td><strong>' + p.title + '</strong></td>' +
+                    '<td><span class="post-category">' + p.category + '</span></td>' +
+                    '<td style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">' + p.date + '</td>' +
+                    '<td>' + (p.featured ? '★' : '—') + '</td>' +
+                    '<td><div class="action-btns">' +
+                    '<button class="submit-btn btn-small btn-secondary" onclick="editPost(\'' + p.id + '\')">Edit</button>' +
+                    '<button class="submit-btn btn-small btn-danger" onclick="deletePost(\'' + p.id + '\')">Delete</button>' +
+                    '</div></td></tr>';
+            }).join('');
+        });
+    }
+    function showPanel(name) {
+        document.getElementById('panel-list').style.display = name === 'list' ? 'block' : 'none';
+        document.getElementById('panel-edit').style.display = name === 'new' || name === 'edit' ? 'block' : 'none';
+        document.querySelectorAll('.sidebar-btn').forEach(function(b, i) { b.classList.toggle('active', i === (name === 'list' ? 0 : 1)); });
+        if (name === 'new') {
+            document.getElementById('form-title').textContent = 'New Post';
+            document.getElementById('edit-id').value = '';
+            document.getElementById('f-title').value = '';
+            document.getElementById('f-excerpt').value = '';
+            document.getElementById('f-content').value = '';
+            document.getElementById('f-author').value = '';
+            document.getElementById('f-image').value = 'images/habitat.png';
+            document.getElementById('f-readtime').value = '5 min';
+            document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('f-featured').checked = false;
+        }
+        if (name === 'list') loadPosts();
+    }
+    function editPost(id) {
+        api('GET', '/api/posts/' + id).then(function(p) {
+            document.getElementById('form-title').textContent = 'Edit Post';
+            document.getElementById('edit-id').value = p.id;
+            document.getElementById('f-title').value = p.title;
+            document.getElementById('f-excerpt').value = p.excerpt;
+            document.getElementById('f-content').value = p.content;
+            document.getElementById('f-author').value = p.author;
+            document.getElementById('f-image').value = p.image || '';
+            document.getElementById('f-readtime').value = p.readTime || '';
+            document.getElementById('f-date').value = p.date;
+            document.getElementById('f-category').value = p.category;
+            document.getElementById('f-featured').checked = p.featured;
+            showPanel('edit');
+        });
+    }
+    function savePost() {
+        var id = document.getElementById('edit-id').value;
+        var data = {
+            title: document.getElementById('f-title').value,
+            excerpt: document.getElementById('f-excerpt').value,
+            content: document.getElementById('f-content').value,
+            author: document.getElementById('f-author').value,
+            image: document.getElementById('f-image').value,
+            readTime: document.getElementById('f-readtime').value,
+            date: document.getElementById('f-date').value,
+            category: document.getElementById('f-category').value,
+            featured: document.getElementById('f-featured').checked
+        };
+        var method = id ? 'PUT' : 'POST';
+        var url = id ? '/api/posts/' + id : '/api/posts';
+        api(method, url, data).then(function() {
+            toast(id ? 'Post updated!' : 'Post created!');
+            showPanel('list');
+        }).catch(function() { toast('Error saving post', true); });
+    }
+    function deletePost(id) {
+        if (!confirm('Delete this post permanently?')) return;
+        api('DELETE', '/api/posts/' + id).then(function() {
+            toast('Post deleted');
+            loadPosts();
+        }).catch(function() { toast('Error deleting post', true); });
+    }
+    </script>
+</body>
+</html>

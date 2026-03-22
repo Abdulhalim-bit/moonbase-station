@@ -1,0 +1,67 @@
+[
+    {
+        "id": "1",
+        "title": "First Habitat Module Successfully Pressurized",
+        "slug": "habitat-module-pressurized",
+        "excerpt": "FOUNDATION mission achieves critical milestone as Habitat Alpha reaches full atmospheric pressure for the first time.",
+        "content": "In a historic moment for lunar colonization, the FOUNDATION mission team has successfully pressurized Habitat Alpha — the first permanent human dwelling on the Moon's surface.\n\nThe module, delivered to Shackleton Crater in early 2029, underwent 47 days of autonomous assembly by construction drones before the pressurization sequence began. Engineers at Moonbase Mission Control monitored every sensor as nitrogen and oxygen were gradually introduced to the 280-cubic-meter interior.\n\n\"Seeing those pressure gauges stabilize at 101.3 kPa was the most emotional moment of my career,\" said Dr. Mikhail Petrov, Engineering Lead. \"We've built a home on another world.\"\n\nThe habitat features triple-layer radiation shielding, a closed-loop atmospheric recycling system, and emergency pressure bulkheads that can isolate any section within 0.3 seconds. The internal temperature is maintained at a constant 21°C despite external surface temperatures ranging from -173°C to 127°C.\n\nNext steps include fitting the interior with crew quarters, the medical bay, and the hydroponic growth chambers before the GENESIS crew arrives in 2031.",
+        "category": "Engineering",
+        "author": "Dr. Mikhail Petrov",
+        "date": "2029-03-15",
+        "image": "images/habitat.png",
+        "readTime": "4 min",
+        "featured": true
+    },
+    {
+        "id": "2",
+        "title": "2032 Civilian Explorer Program Now Open",
+        "slug": "civilian-explorer-program",
+        "excerpt": "Moonbase announces its first civilian cohort — 200 slots for engineers, scientists, educators, and adventurers.",
+        "content": "Moonbase Aerospace Corp. is proud to announce the opening of applications for the 2032 Civilian Explorer Program — the first opportunity for non-military, non-agency personnel to live and work on the lunar surface.\n\nThe program will select 200 individuals across four tracks:\n\n- **Pioneer Engineers** — skilled tradespeople and technicians for EXPANSION construction\n- **Research Fellows** — scientists pursuing lunar-specific research projects\n- **Educator Corps** — teachers who will develop the first lunar education curriculum\n- **Explorer Track** — adventurers and documentarians capturing the human experience\n\nSelected candidates will undergo 14 months of training at Moonbase Academy in French Guiana, covering EVA operations, low-gravity physiology, emergency protocols, and lunar geology.\n\n\"This isn't tourism — it's participation in civilization's greatest project,\" said Station Director Dr. Elena Vasquez. \"We're looking for people who want to build, discover, and contribute.\"\n\nApplications open March 1, 2030. The selection process includes physical fitness assessment, psychological evaluation, technical skills testing, and a collaborative team exercise held in the Mojave Desert analog facility.",
+        "category": "Announcements",
+        "author": "Dr. Elena Vasquez",
+        "date": "2029-11-22",
+        "image": "images/explorer.png",
+        "readTime": "3 min",
+        "featured": true
+    },
+    {
+        "id": "3",
+        "title": "Shackleton Crater Water Ice Exceeds All Projections",
+        "slug": "water-ice-discovery",
+        "excerpt": "PATHFINDER rover data reveals water ice reserves 340% larger than initial estimates — enough to sustain a city of 10,000.",
+        "content": "Analysis of comprehensive drilling data from the PATHFINDER rover mission has revealed that water ice deposits in Shackleton Crater's permanently shadowed regions are approximately 340% larger than the most optimistic pre-mission projections.\n\nDr. Aria Okonkwo, Chief Science Officer, presented the findings at the International Lunar Science Conference:\n\n\"We're looking at an estimated 6.2 billion liters of accessible water ice within the top 3 meters of regolith. At current consumption models, this could sustain a population of 10,000 people indefinitely — with surplus for hydrogen fuel production and agricultural irrigation.\"\n\nThe deposits are concentrated in three main zones along the crater floor, with the deepest accumulations reaching 4.7 meters. The ice appears to be mixed with fine regolith in a ratio that makes extraction via thermal mining highly efficient.\n\nThis discovery fundamentally changes the economics of lunar habitation. Water is not only essential for life support but serves as the raw material for rocket propellant (liquid hydrogen and oxygen), making the Moon a viable refueling station for deep space missions.\n\nMoonbase has already begun designing the AQUIFER extraction facility, scheduled for deployment as part of the EXPANSION phase in 2032.",
+        "category": "Science",
+        "author": "Dr. Aria Okonkwo",
+        "date": "2029-07-08",
+        "image": "images/water_ice.png",
+        "readTime": "5 min",
+        "featured": true
+    },
+    {
+        "id": "4",
+        "title": "Meet the GENESIS Crew: 12 Pioneers, One Giant Leap",
+        "slug": "genesis-crew-announced",
+        "excerpt": "The 12 crew members selected for humanity's first permanent lunar rotation have been officially announced.",
+        "content": "After a selection process spanning 18 months and 14,000 applicants, Moonbase has officially announced the 12 crew members who will comprise the GENESIS mission — the first permanent human presence on the Moon.\n\nThe crew represents seven nations and includes specialists in geology, medicine, engineering, botany, psychology, and communications. Their six-month rotation will begin in Q2 2031.\n\nCommander James Chen, who will lead the mission, spoke at the announcement ceremony: \"Every member of this crew was chosen not just for their expertise, but for their ability to work as a family in the most isolated environment any human has ever called home.\"\n\nThe crew will validate all life support systems, conduct the first geological surveys of the deep crater floor, plant the first lunar greenhouse crops, and establish communication protocols for future rotations.\n\nTraining is already underway at three locations: the Mojave analog facility for EVA operations, the underwater habitat off Key Largo for confined-space psychology, and the Moonbase Academy campus for technical systems training.\n\n\"We're not just going to the Moon,\" said crew botanist Dr. Yuki Tanaka. \"We're going to grow a garden there.\"",
+        "category": "Crew",
+        "author": "Commander James Chen",
+        "date": "2030-01-15",
+        "image": "images/crew.png",
+        "readTime": "4 min",
+        "featured": false
+    },
+    {
+        "id": "5",
+        "title": "HELIOS Solar Array Achieves 3.2 GW Milestone",
+        "slug": "helios-solar-milestone",
+        "excerpt": "The crater-rim solar installation reaches full operational capacity, powering all current and planned Moonbase facilities.",
+        "content": "The HELIOS solar array, spanning 2.4 kilometers along the rim of Shackleton Crater, has reached its design capacity of 3.2 gigawatts — enough to power a small city on Earth and more than sufficient for all current and projected Moonbase operations through 2035.\n\nThe array takes advantage of the lunar south pole's unique geometry: the crater rim receives near-continuous sunlight, with only brief shadow periods during the most extreme parts of the lunar wobble cycle. Battery storage systems can bridge these gaps for up to 72 hours.\n\nEach of the 214 panels uses next-generation perovskite-silicon tandem cells achieving 38.7% efficiency — a record for deployed extraterrestrial photovoltaics. The panels are self-cleaning, using electrostatic dust repulsion to prevent regolith accumulation.\n\n\"Energy is the foundation of everything we do here,\" said power systems engineer Marcus Webb. \"With HELIOS at full capacity, we can run life support, mining operations, research equipment, and the manufacturing plant simultaneously without any load management.\"\n\nExcess power will be used for water electrolysis, producing hydrogen and oxygen for both breathing air and rocket fuel — closing another loop in Moonbase's self-sustainability model.",
+        "category": "Engineering",
+        "author": "Marcus Webb",
+        "date": "2030-06-20",
+        "image": "images/solar.png",
+        "readTime": "4 min",
+        "featured": false
+    }
+]
