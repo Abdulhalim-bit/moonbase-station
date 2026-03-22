@@ -2,9 +2,6 @@
   "name": "moonbase",
   "version": "1.0.0",
   "description": "Futuristic space station website",
-  "scripts": {
-    "start": "node local-dev.js"
-  },
   "dependencies": {
     "express": "^5.2.1"
   }
